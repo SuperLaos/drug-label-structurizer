@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- lang 可按输出语言切换：中文 zh-CN / 英文 en。UI 文案已做中英并列，便于双语发布。 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>__TITLE__ · 结构化说明书 / Structured Drug Label</title>
+<style>
+  body{margin:0;background:#f2f4f7;}
+  .wb-wrap{max-width:720px;margin:0 auto;padding:18px 16px 30px;background:#fff;
+    font-family:'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;color:#333;
+    font-size:15px;line-height:1.85;}
+  .wb-h1{font-size:22px;font-weight:800;color:#15527a;text-align:center;margin:4px 0 2px;}
+  .wb-sub{font-size:13px;color:#7a8a99;text-align:center;margin:0 0 14px;}
+  .wb-h2{font-size:18px;font-weight:700;color:#15527a;margin:28px 0 12px;padding:8px 12px;
+    background:#eef5fb;border-left:5px solid #1f6f9e;}
+  .wb-h3{font-size:15.5px;font-weight:600;color:#1f6f9e;margin:20px 0 8px;}
+  .wb-p{font-size:14.5px;line-height:1.85;color:#2b2b2b;margin:10px 0;}
+  .wb-info{border-left:4px solid #1f6f9e;background:#eef5fb;color:#1d3b52;
+    padding:10px 14px;font-size:13px;line-height:1.8;margin:12px 0;border-radius:0 4px 4px 0;}
+  .wb-warn{border:1px solid #e0b400;background:#fff7db;color:#7a5b00;
+    padding:10px 14px;font-size:13px;line-height:1.8;margin:12px 0;border-radius:4px;}
+  .wb-tbl{border-collapse:collapse;width:100%;margin:14px 0 18px;font-size:13.5px;line-height:1.7;color:#333;}
+  .wb-tbl th{border:1px solid #c9d4dd;background:#1f6f9e;color:#fff;padding:8px 10px;text-align:left;font-weight:600;}
+  .wb-tbl td{border:1px solid #c9d4dd;padding:8px 10px;vertical-align:top;}
+  .wb-tbl tr.wb-zeb{background:#f6fafc;}
+  .wb-sec{border:1px solid #c9d4dd;background:#eaf2f8;font-weight:600;padding:8px 10px;color:#15527a;}
+  .wb-toc{background:#f7fafc;border:1px solid #e3ebf2;border-radius:6px;padding:12px 16px;margin:14px 0;font-size:13.5px;}
+  .wb-toc strong{display:block;margin-bottom:6px;color:#15527a;font-size:14px;}
+  .wb-toc a{display:block;color:#1f6f9e;text-decoration:none;padding:3px 0;line-height:1.9;}
+  .wb-toc a:hover{text-decoration:underline;}
+  .wb-back{text-align:right;margin:6px 0 2px;}
+  .wb-back a{color:#1f6f9e;text-decoration:none;font-size:13px;}
+  .wb-back a:hover{text-decoration:underline;}
+  .wb-ft{font-size:12px;color:#9aa7b3;line-height:1.7;margin-top:26px;padding-top:14px;border-top:1px solid #e3ebf2;}
+  .wb-ul{font-size:14px;line-height:1.8;color:#2b2b2b;padding-left:22px;margin:10px 0;}
+  .wb-ul li{margin:4px 0;}
+  .wb-top{text-align:center;margin:18px 0 8px;}
+  .wb-top a{color:#1f6f9e;text-decoration:none;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wb-wrap">
+
+  <h1 class="wb-h1" id="top">__TITLE__</h1>
+  <p class="wb-sub">__SUBTITLE__</p>
+
+  <div class="wb-warn">
+    <strong>⚠ 黑框级警告（摘要）| Black-Box Warning (Summary):</strong>__BLACKBOX__
+  </div>
+
+  <div class="wb-info">
+    <strong>数据来源说明 | Data Source:</strong>__DATASOURCE__
+  </div>
+
+  <div class="wb-toc" id="toc">
+    <strong>目录 | Table of Contents</strong>
+    <a href="#sec1">一、药品基本信息 | Basic Information</a>
+    <a href="#sec2">二、适应症 | Indications</a>
+    <a href="#sec3">三、用法用量 | Dosage &amp; Administration</a>
+    <a href="#sec4">四、药理毒理 | Pharmacology &amp; Toxicology</a>
+    <a href="#sec5">五、药代动力学 | Pharmacokinetics</a>
+    <a href="#sec6">六、循证医学证据 | Evidence</a>
+    <a href="#sec7">七、联合用药 | Drug Interactions</a>
+    <a href="#sec8">八、不良反应 | Adverse Reactions</a>
+    <a href="#sec9">九、禁忌症 | Contraindications</a>
+    <a href="#sec10">十、注意事项 | Precautions</a>
+    <a href="#sec11">十一、特殊人群用药 | Special Populations</a>
+    <a href="#sec12">十二、药物过量 | Overdosage</a>
+  </div>
+
+  <!-- 生成时按第 3 节 12 模块填充对应表格/段落，每节末尾加：<p class="wb-back"><a href="#toc">↑ 返回目录 | Back to TOC</a></p> -->
+  <!-- When generating, fill tables/paragraphs per the 12 modules (Section 3); at each section end add: <p class="wb-back"><a href="#toc">↑ 返回目录 | Back to TOC</a></p> -->
+
+  <p class="wb-top"><a href="#top">↑ 返回顶部 | Back to Top</a></p>
+
+  <p class="wb-ft">
+    __FOOTER__
+  </p>
+
+</div>
+</body>
+</html>
