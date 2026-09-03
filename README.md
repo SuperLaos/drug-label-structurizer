@@ -1,5 +1,7 @@
 # drug-label-structurizer（结构化药品说明书）
 
+> **项目定位**：本仓库是一个面向**医药行业**的 AI 技能（WorkBuddy Skill），用于将非结构化的**药品说明书**自动**结构化**为标准化的 HTML 与 JSON Schema 输出，服务于医药**市场准入**、合规审查与数据分析场景。
+
 > 将非结构化的原始药品说明书转化为「标准 12 模块骨架 + 机器可读 JSON Schema + 多形态输出」的结构化文档，并对四类来源进行规范标注，最终强制进入人工（药师）复核环节。
 >
 > Transforms unstructured drug package inserts into standardized documents with a 12-module skeleton, machine-readable JSON Schema, and multi-format outputs, with four source-annotation rules and a mandatory human (pharmacist) review step.
