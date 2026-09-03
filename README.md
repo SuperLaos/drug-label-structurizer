@@ -17,16 +17,15 @@
 - [输出形态 | Output Formats](#输出形态--output-formats)
 - [标注规范 | Annotation Rules](#标注规范--annotation-rules)
 - [合规与免责 | Compliance & Disclaimer](#合规与免责--compliance--disclaimer)
-- [案例 | Examples](#案例--examples)
 - [许可证 | License](#许可证--license)
 
 ---
 
 ## 简介 | Introduction
 
-**中文**：drug-label-structurizer 是一款用于把药品说明书（docx / pdf / 图片）解析并结构化整理为标准化文档的技能。它对齐 NMPA《化学药品及生物制品说明书通用格式和撰写指南》并兼容 FDA SPL 的「叙述 + 编码」双层结构，提供标准 12 模块骨架、机器可读 JSON Schema、四类来源标注（未提及 / 不适用 / 联网补充 / 监管差异），并支持多形态输出：Markdown、HTML（带目录）、JSON、患者版（适老化）、单药速查卡、多药横向对比表，内置 QA 复核清单与强制人工（药师）复核机制。
+**中文**：drug-label-structurizer 是一款用于把药品说明书（docx / pdf / 图片）解析并结构化整理为标准化文档的技能。它对齐 NMPA《化学药品及生物制品说明书通用格式和撰写指南》并兼容 FDA SPL 的「叙述 + 编码」双层结构，提供标准 12 模块骨架、机器可读 JSON Schema、四类来源标注（未提及 / 不适用 / 联网补充 / 监管差异），并支持多形态输出：Markdown、HTML（带目录）、JSON、患者版（适老化）、单药速查卡、多药横向对比表，内置 QA 复核清单与强制人工（药师）复核机制。法规依据包括《药品说明书和标签管理规定》（局令第24号）、《中药注册管理专门规定》（2023年第20号）及《药品说明书适老化及无障碍改革试点工作方案》（2023年第142号）。
 
-**English**: drug-label-structurizer is a skill that parses and structurally organizes drug package inserts (docx / pdf / images) into standardized documents. It aligns with NMPA's *General Format and Writing Guidelines for Chemical and Biological Product Labels* and is compatible with the FDA SPL narrative-plus-encoded dual-layer structure. It provides a standard 12-module skeleton, machine-readable JSON Schema, four types of source annotations (Not Mentioned / Not Applicable / Web Supplement / Regulatory Difference), and supports multiple output formats: Markdown, HTML (with TOC), JSON, patient version (elderly-friendly), single-drug quick-reference card, and multi-drug comparison table, with a built-in QA checklist and mandatory human (pharmacist) review mechanism.
+**English**: drug-label-structurizer is a skill that parses and structurally organizes drug package inserts (docx / pdf / images) into standardized documents. It aligns with NMPA's *General Format and Writing Guidelines for Chemical and Biological Product Labels* and is compatible with the FDA SPL narrative-plus-encoded dual-layer structure. It provides a standard 12-module skeleton, machine-readable JSON Schema, four types of source annotations (Not Mentioned / Not Applicable / Web Supplement / Regulatory Difference), and supports multiple output formats: Markdown, HTML (with TOC), JSON, patient version (elderly-friendly), single-drug quick-reference card, and multi-drug comparison table, with a built-in QA checklist and mandatory human (pharmacist) review mechanism. Regulatory references include the *Provisions on the Administration of Drug Package Inserts and Labels* (Order No. 24), the *Special Provisions on Traditional Chinese Medicine Registration* (2023 No. 20), and the *Pilot Work Plan for Age-friendly and Accessible Drug Package Insert Reform* (2023 No. 142).
 
 **适用场景 | Use cases**: 结构化说明书 / 药品说明书整理 / 说明书转 JSON / 患者版说明书 / 多药对比 / 药品知识库字段提取 / drug label 或 SPL 结构化。
 
@@ -46,6 +45,10 @@
   Built-in QA checklist plus mandatory human review to reduce compliance and medication-safety risks.
 - **合规与免责声明模板**：内置，提示须经药师/医师审核。
   Bundled compliance & disclaimer template reminding that outputs require pharmacist/physician review.
+- **法规依据完整**：对齐 NMPA 规范，覆盖《药品说明书和标签管理规定》（局令第24号）、《中药注册管理专门规定》（2023年第20号）及适老化改革试点要求。
+  Complete regulatory references aligned with NMPA standards, including Order No. 24, TCM Special Provisions (2023 No. 20), and age-friendly reform requirements.
+- **防幻觉校验**：QA 清单包含高风险字段（剂量/禁忌/严重不良反应）逐字比对原文的检查项。
+  Hallucination prevention: QA checklist includes word-for-word verification of high-risk fields (dosage/contraindications/serious ADRs) against source text.
 
 ---
 
@@ -53,7 +56,7 @@
 
 ```
 drug-label-structurizer/
-├── SKILL.md                          # 主文件：定位、原则、12 模块骨架、字段 Schema、标注规范、输出生成器、QA 清单、免责模板、案例库、工作流
+├── SKILL.md                          # 主文件：定位、原则、12 模块骨架、字段 Schema、标注规范、输出生成器、QA 清单、免责模板、工作流
 ├── README.md                         # 中英双语说明（本文件）
 ├── references/                       # 规范与数据字典（机器可读层）
 │   └── json_schema.md                # 完整 JSON Schema（字段字典，对齐 NMPA 章节 + FDA SPL 产品主数据）
@@ -131,6 +134,9 @@ unzip drug-label-structurizer.zip -d "$HOME/.workbuddy/skills/"
 8. **交付并提示人工复核**。
    Deliver and prompt for human review.
 
+> **方法论补充 | Methodology Note**：基于 FDA 相关研究（Gray et al., 2023），段落级分类准确率达 94-96%，建议对核心章节（适应症/警示/不良反应）进一步拆分为句子级分类，以提升监管审查效率。
+> *Methodology note: Based on FDA research (Gray et al., 2023), paragraph-level classification achieves 94-96% accuracy. For core sections (indications/warnings/adverse reactions), consider sentence-level classification for improved regulatory review efficiency.*
+
 ---
 
 ## 输出形态 | Output Formats
@@ -167,25 +173,19 @@ unzip drug-label-structurizer.zip -d "$HOME/.workbuddy/skills/"
 
 ---
 
-## 案例 | Examples
+## 相似项目参考 | Related Projects
 
-现有示范（保留并作为模板样例）| Bundled examples (kept as templates):
+以下为同类开源项目，供参考对标：
 
-- `环孢素软胶囊` — 纯原文整理 + MD/HTML 双输出（不联网）
-  Cyclosporine Soft Capsule — original-text only, MD/HTML dual output (no web)
-- `仑卡奈单抗注射液` — 含【联网补充】+【监管差异】（中英 MHRA 对比）
-  Lecanemab Injection — with Web Supplement + Regulatory Difference (China–UK MHRA)
+| 项目 | 类型 | 相似点 | 差异点 | 链接 |
+|---|---|---|---|---|
+| **FDA Molecule Intelligence Agent** | 开源工具 | FDA 药品标签结构化、RAG、防幻觉 | 面向 FDA SPL，非 NMPA | `github.com/mahmadza/fda-agent` |
+| **Drug-RAG-Chatbot** | 开源工具 | 药品说明书结构化、答案溯源 | 面向通用药品，非 NMPA 12模块 | `github.com/1hgffg801/Drug-RAG-Chatbot` |
+| **MedOrder Lite** | 开源工具 | AI 辅助药品说明书解析 | 面向临床试验，支持 OpenAI/Claude/DeepSeek | `github.com/liqi3333/med-order-lite-v1` |
+| **ChatWiki doc-to-skill** | 开源工具 | 文档一键转 Skill | 通用文档，非药品专用 | `github.com/zhimaAi` |
 
-建议后续补齐的样例类型 | Suggested example types to add:
-
-1. 化药 / 生物制品 / 中药 各一类
-   One each of chemical drug / biologic / TCM
-2. 患者版样例 ×1
-   Patient version ×1
-3. 多药横向对比样例 ×1
-   Multi-drug comparison ×1
-4. JSON 输出样例 ×1（验证 Schema）
-   JSON output ×1 (validate Schema)
+**差异化定位**：本技能可能是国内首个对齐 NMPA 规范 + FDA SPL 双层的 WorkBuddy Skill，具有独特定位。
+**Differentiation**: This skill may be among the first WorkBuddy Skills in China to align with both NMPA standards and FDA SPL dual-layer structure, offering unique positioning.
 
 ---
 
